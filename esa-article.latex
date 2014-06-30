@@ -4,7 +4,8 @@
 \usepackage{setspace}
 \usepackage[displaymath, mathlines]{lineno}
 \linenumbers
-\usepackage{authblk}
+
+\usepackage[affil-it]{authblk}
 
 
 $if(fontfamily)$
@@ -12,10 +13,7 @@ $if(fontfamily)$
 $else$
 \usepackage{lmodern}
 $endif$
-%$if(linestretch)$
-%\usepackage{setspace}
-%\setstretch{$linestretch$}
-%$endif$
+
 
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
@@ -142,17 +140,15 @@ $endif$
 $if(title)$
 \title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
 $endif$
-$if(author)$
+
 $for(author)$
 \author[$author.affilindx$]{$author.name$}
 $endfor$
-$endif$
 
-$if(affil)$
 $for(affil)$
 \affil[$affil.indx$]{$affil.name$}
 $endfor$
-$endif$
+
 
 
 
