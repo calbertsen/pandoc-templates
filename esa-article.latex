@@ -6,7 +6,7 @@
 \linenumbers
 
 \usepackage[affil-it]{authblk}
-
+\providecommand{\keywords}[1]{\indent \textit{Key words: #1}}
 
 $if(fontfamily)$
 \usepackage{$fontfamily$}
@@ -166,8 +166,15 @@ $endif$
 $if(abstract)$
 \begin{abstract}
 $abstract$
+
+$if(keywords)$
+\keywords{$keywords$}
+$endif$
 \end{abstract}
 $endif$
+
+
+
 
 $for(include-before)$
 $include-before$
