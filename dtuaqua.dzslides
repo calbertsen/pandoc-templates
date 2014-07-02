@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+$for(author-meta)$
+  <meta name="author" content="$author-meta$" />
+$endfor$
+$if(date-meta)$
+  <meta name="dcterms.date" content="$date-meta$" />
+$endif$
+  <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
+  <style type="text/css">code{white-space: pre;}</style>
+$if(highlighting-css)$
+  <style type="text/css">
+$highlighting-css$
+  </style>
+$endif$
+<style>
+  html { background-color: black; }
+  body { background-color: white; border-radius: 12px}
+  /* A section is a slide. It's size is 800x600, and this will never change */
+  section {
+      font-family: Arial, serif;
+      font-size: 20pt;
+    }
+  address, blockquote, dl, fieldset, form, h1, h2, h3, h4, h5, h6, hr, ol, p, pre, table, ul, dl { padding: 0; }
+  h1, h2, h3 {
+    text-align: center;
+    margin: 10px 10px;
+  }
+  ul, ol {
+    margin: 10px 10px 10px 50px;
+  }
+  section.titleslide h1 { margin-top: 200px; }
+  h1.title { margin-top: 150px; }
+  h1 { font-size: 180%; }
+  h2 { font-size: 120%; }
+  h3 { font-size: 100%; }
+  q { quotes: "“" "”" "‘" "’"; }
+  blockquote { font-style: italic }
+  /* Figures are displayed full-page, with the caption on
+     top of the image/video */
+  figure {
+    background-color: black;
+  }
+  figcaption {
+    position: absolute;
+    padding; 5px;
+    right: 2%;
+    bottom: 2%;
+    font-size: 0.5em;
+    $if(capbg)$
+    background: $capbg$;
+    $endif$
+    $if(capcol)$
+    color: $capcol$;
+    $endif$
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 40px;
+    text-align: right;
+    background-color: #F3F4F8;
+    border-top: 1px solid #CCC;
+  }
+
+  /* Transition effect */
+  /* Feel free to change the transition effect for original
+     animations. See here:
+     https://developer.mozilla.org/en/CSS/CSS_transitions
+     How to use CSS3 Transitions: */
+  /*section {
+      -moz-transition: left 0.1ms ease 0s;
+      -webkit-transition: left 0.1ms ease 0s;
+      -ms-transition: left 0.1ms ease 0s;
+      transition: left 0.1ms ease 0s;
+  }*/
+
+  /* Before */
+  section { left: -150%; }
+  /* Now */
+  section[aria-selected] { left: 0; }
+  /* After */
+  section[aria-selected] ~ section { left: +150%; }
+
+  /* Incremental elements */
+
+  /* By default, visible */
+  .incremental > * { opacity: 1; }
+
+  /* The current item */
+  .incremental > *[aria-selected] { color: black; opacity: 1; }
+
+  /* The items to-be-selected */
+  .incremental > *[aria-selected] ~ * { color: #999999; }
+</style>
+
+$if(math)$
+  $math$
+$endif$
+$for(header-includes)$
+  $header-includes$
+$endfor$
+
+<!-- custom style for dtu slides -->
+<style>
+
+  html { background-color: black;
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+    /*border-bottom: 7px solid red;*/}
+   footer { position: absolute; bottom: 20px; right: 50px; }
+  /*strong {color: #C4D2FF}*/
+  body {
+      font-family: verdana;
+      color: black;
+      font-size: 2em;
+      /*border-bottom: 7px solid red;*/
+  }
+
+  figure {
+      margin: -10px 0px;
+  }
+
+
+  section { left: -150%;
+	    background-color: white;
+	    background-image: url(fig/dtu_logo.png);
+	    background-position: 98% 3%;
+	    background-size: auto 60px;
+	    background-repeat: no-repeat;
+	  }
+  section[aria-selected] { left: 0; }
+  section[aria-selected] ~ section { left: +150% }
+
+
+ h1 { color: black;
+  	font-family: verdana;
+  	font-size: 2em;
+      text-align: left;
+      padding: 0;
+  }
+  h2 {
+  	font-family: verdana;
+      color: black;
+      font-size: 1.5em;
+      text-align: left;
+  }
+   h3 {
+   	font-family: verdana;
+      color: black;
+      font-size: 1em;
+      text-align: left;
+  }
+   p {
+       font-family: verdana;
+      color: black;
+      font-size: 0.5em;
+      text-align: left;
+      padding: 10px;
+  }
+
+  
+
+/*version 1: fancy picture  */
+$if(backpic)$
+ section.title {
+  	background-image: url(fig/dtu_logo_w_long.png), url(fig/dtu_aqua_name_w.png), url($backpic$);
+	background-repeat: no-repeat;
+	background-position: 98% 2%, 10px 98%, center center;
+     background-size: auto 60px, auto 60px, cover;         /* Generic*/
+    width: 100%;
+    }
+ section.title h1{
+     color: white;
+     margin: 150px 10px 0px 10px; 
+}
+ section.title h2{
+     color: white;
+}
+ section.title h3{
+     color: white;
+}
+$else$
+/*version 2: standard  */
+ section.title {
+  	background-image: url(fig/dtu_logo.png), url(fig/dtu_aqua_frise.png), url(fig/dtu_aqua_name.png);
+	background-repeat: no-repeat;
+	background-position: 98% 2%, 153% 98%, 10px 98%;
+    background-size: auto 60px, auto 200px, auto 60px;        /* Generic*/
+    width: 100%;
+    }
+ section.title h1{
+     color: black;
+    margin: 150px 10px 0px 10px; 
+}
+$endif$
+ 
+
+
+
+</style>
+
+
+</head>
+<body>
+$if(title)$
+<section class="title">
+  <h1 class="title">$title$</h1>
+$if(subtitle)$
+  <h1 class="subtitle">$subtitle$</h1>
+$endif$
+$for(author)$
+  <h2 class="author">$author$</h2>
+$endfor$
+  <h3 class="date">$date$</h3>
+</section>
+$endif$
+$for(include-before)$
+$include-before$
+$endfor$
+$body$
+$for(include-after)$
+$include-after$
+$endfor$
+$dzslides-core$
+</body>
+</html>
