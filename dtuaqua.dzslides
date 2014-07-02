@@ -71,6 +71,12 @@ $endif$
     overflow: hidden;
     z-index:0;
   }
+  div.footprog {
+    overflow: hidden;
+    float: left;
+    left: 0px; 
+    padding: 0px 10px 0px 0px;
+  }
   div.footau {
   overflow: hidden;
     float: left;
@@ -252,7 +258,14 @@ $body$
 $for(include-after)$
 $include-after$
 $endfor$
-<footer><div class="footau">DTU Aqua - $author$</div><div class="footdate">$date$</div><div class="foottit">$title$</div></footer>
+<footer><div class="footprog" id="prog"></div><div class="footau">DTU Aqua - $author$</div><div class="footdate">$date-meta$</div><div class="foottit">$title$</div></footer>
 $dzslides-core$
+
+<script>
+  upProg = setInterval(function(){
+    document.getElementById("prog").innerHTML = Dz.idx; 
+    console.log(Dz.idx + " " + Dz.slides.length);
+  },1);
+</script>
 </body>
 </html>
