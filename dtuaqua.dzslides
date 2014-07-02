@@ -41,12 +41,15 @@ $endif$
      top of the image/video */
   figure {
     background-color: black;
+    z-index: 1;
+    position: absolute;
   }
   figcaption {
+    z-index: 2;
     position: absolute;
     padding; 5px;
     right: 2%;
-    bottom: 2%;
+    top: 450px;
     font-size: 0.5em;
     $if(capbg)$
     background: $capbg$;
@@ -55,15 +58,36 @@ $endif$
     color: $capcol$;
     $endif$
   }
+  iframe {
+    position: absolute;
+    z-index:1;
+  }
   footer {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 40px;
-    text-align: right;
-    background-color: #F3F4F8;
-    border-top: 1px solid #CCC;
+    bottom: 0px;
+    left: 10px;
+    width: 774px;
+    font-size: 0.3em;
+    overflow: hidden;
+    z-index:0;
   }
+  div.footau {
+  overflow: hidden;
+    float: left;
+    left: 0px;
+  }
+  div.foottit {
+    float: right;
+    overflow: hidden;
+    text-align: right;
+  }   
+  div.footdate {
+    float: right;
+    right: 0px;
+    padding: 0px 1px 0px 30px;
+    text-align: right;
+  }
+
 
   /* Transition effect */
   /* Feel free to change the transition effect for original
@@ -129,7 +153,7 @@ $endfor$
   section { left: -150%;
 	    background-color: white;
 	    background-image: url(fig/dtu_logo.png);
-	    background-position: 98% 3%;
+	    background-position: 98% 2%;
 	    background-size: auto 60px;
 	    background-repeat: no-repeat;
 	  }
@@ -173,6 +197,7 @@ $if(backpic)$
 	background-position: 98% 2%, 10px 98%, center center;
      background-size: auto 60px, auto 60px, cover;         /* Generic*/
     width: 100%;
+    z-index: 1;
     }
  section.title h1{
      color: white;
@@ -192,6 +217,7 @@ $else$
 	background-position: 98% 2%, 153% 98%, 10px 98%;
     background-size: auto 60px, auto 200px, auto 60px;        /* Generic*/
     width: 100%;
+    z-index: 1;
     }
  section.title h1{
      color: black;
@@ -226,6 +252,7 @@ $body$
 $for(include-after)$
 $include-after$
 $endfor$
+<footer><div class="footau">DTU Aqua - $author$</div><div class="footdate">$date$</div><div class="foottit">$title$</div></footer>
 $dzslides-core$
 </body>
 </html>
