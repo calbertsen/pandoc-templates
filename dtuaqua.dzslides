@@ -71,6 +71,20 @@ $endif$
     overflow: hidden;
     z-index:0;
   }
+
+
+  h5.citation {
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    width: 774px;
+    font-size: 0.4em;
+    overflow: hidden;
+    text-align:right;
+  font-weight:normal;
+    z-index:3;
+  }
+
   div.footprog {
     overflow: hidden;
     float: left;
@@ -162,6 +176,7 @@ $endfor$
 	    background-position: 98% 2%;
 	    background-size: auto 60px;
 	    background-repeat: no-repeat;
+            font-size: 1em;
 	  }
   section[aria-selected] { left: 0; }
   section[aria-selected] ~ section { left: +150% }
@@ -169,20 +184,20 @@ $endfor$
 
  h1 { color: black;
   	font-family: verdana;
-  	font-size: 2em;
+  	font-size: 1.5em;
       text-align: left;
       padding: 0;
   }
   h2 {
   	font-family: verdana;
       color: black;
-      font-size: 1.5em;
+      font-size: 1em;
       text-align: left;
   }
    h3 {
    	font-family: verdana;
       color: black;
-      font-size: 1em;
+      font-size: 0.75em;
       text-align: left;
   }
    p {
@@ -192,6 +207,15 @@ $endfor$
       text-align: left;
       padding: 10px;
   }
+  section figure+p {
+    z-index:3;
+  position: absolute;
+}
+
+  math {
+   font-size: 1.8em;
+   padding: 0px;
+}
 
   
 
@@ -264,7 +288,6 @@ $dzslides-core$
 <script>
   upProg = setInterval(function(){
     document.getElementById("prog").innerHTML = Dz.idx; 
-    console.log(Dz.idx + " " + Dz.slides.length);
   },1);
 </script>
 </body>
