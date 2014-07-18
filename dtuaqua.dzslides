@@ -41,9 +41,10 @@ $endif$
   /* Figures are displayed full-page, with the caption on
      top of the image/video */
   figure {
-    background-color: black;
+    background-color: white;
     z-index: 1;
     position: absolute;
+    top: 90px;
   }
   figcaption {
     z-index: 2;
@@ -251,12 +252,20 @@ pre code {
   position: absolute;
 }
 
+  section figure+ul {
+    z-index:3;
+  position: absolute;
+}
+
+
   math {
    font-size: 1.8em;
    padding: 0px;
 }
 
-  
+  h1 {
+   line-height: 150%;
+}
 
 /*version 1: fancy picture  */
 $if(backpic)$
@@ -295,6 +304,10 @@ $else$
 $endif$
  
 
+#references p {
+  font-size: 0.3em;
+  line-height: 100%
+}
 
 
 </style>
