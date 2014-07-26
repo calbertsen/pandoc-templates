@@ -16,7 +16,9 @@ $highlighting-css$
 $endif$
 <style>
   html { background-color: black; }
-  body { background-color: white; border-radius: 12px}
+  body { background-color: white; border-radius: 12px;
+     z-index:-2;
+}
   /* A section is a slide. It's size is 800x600, and this will never change */
   section {
       font-family: verdana;
@@ -42,12 +44,12 @@ $endif$
      top of the image/video */
   figure {
     background-color: white;
-    z-index: 1;
+    z-index: -1;
     position: absolute;
     top: 90px;
   }
   figcaption {
-    z-index: 2;
+    z-index: 0;
     position: absolute;
     padding; 5px;
     right: 2%;
@@ -87,6 +89,8 @@ $endif$
     z-index:3;
   }
 
+
+  
   div.footprog {
     overflow: hidden;
     float: left;
@@ -179,6 +183,7 @@ $endfor$
 	    background-size: auto 60px;
 	    background-repeat: no-repeat;
             font-size: 1em;
+            z-index:-2
 	  }
   section[aria-selected] { left: 0; }
   section[aria-selected] ~ section { left: +150% }
@@ -210,11 +215,59 @@ $endfor$
       padding: 10px;
   }
 
+table{
+    margin-left: auto;
+    margin-right: auto;
+  border-collapse: collapse;
+}
+
+
+
+th {
+  font-family: verdana;
+  color: black;
+  font-size: 0.5em;
+  padding: 10px;
+  line-height: 90%;
+  color: #FFF;
+  background-color: #999999;
+  border: 1px solid #999999;
+  vertical-align: top;
+  }
+td {
+  font-family: verdana;
+  color: black;
+  font-size: 0.5em;
+  padding: 10px;
+  line-height: 90%;
+}
+  
+tr.odd {
+    background-color: #FFFFFF;
+}
+
+tr.even {
+    background-color: #CCCCCC;
+}
+
 ul{
 }
   li {
   font-size: 0.5em;
 }
+dl{
+  margin-left:10px;
+}
+  dt {
+  font-size: 0.5em;
+  line-height:110%;
+}
+  dd {
+  font-size: 0.5em;
+  padding-left: 50px;
+  line-height:110%;
+}
+
   li ul li {
   font-size: 1em;
 }
@@ -231,6 +284,25 @@ line-height: 100%;
 }
 
 
+/* unvisited link */
+a:link {
+    color: black;
+}
+
+/* visited link */
+a:visited {
+    color: black;
+}
+
+/* mouse over link */
+a:hover {
+    color: black;
+}
+
+/* selected link */
+a:active {
+    color: black;
+}
  
  pre {
 overflow-x: auto;
@@ -324,6 +396,7 @@ $endif$
 $for(author)$
   <h2 class="author">$author$</h2>
 $endfor$
+  <h3 class="email">$email$</h3>
   <h3 class="date">$date$</h3>
 </section>
 $endif$
