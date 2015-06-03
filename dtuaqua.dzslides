@@ -48,6 +48,7 @@ $endif$
     position: absolute;
     top: 90px;
   }
+
   figcaption {
     z-index: 0;
     position: absolute;
@@ -146,12 +147,25 @@ $endif$
   .incremental > *[aria-selected] ~ * { color: #999999; }
 </style>
 
-$if(math)$
+$if(mathjax-url)$
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "$mathjax-url$";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+$else$
+  $if(math)$
   $math$
+  $endif$
 $endif$
-$for(header-includes)$
+  $for(header-includes)$
   $header-includes$
-$endfor$
+  $endfor$
+
 
 <!-- custom style for dtu slides -->
 <style>
@@ -424,5 +438,20 @@ $dzslides-core$
     document.getElementById("prog").innerHTML = Dz.idx; 
   },1);
 </script>
+<script>
+  var elm =  document.getElementsByClassName("DiagrammeR");
+  var original_html = [];
+  for(var i = 0; i < elm.length; i++) {
+		     original_html[i]=elm[i].innerHTML;
+		     original_html[i] = original_html[i].replace("<math>", "\\(");
+		     original_html[i] = original_html[i].replace("</math>","\\)");
+		     elm[i].innerHTML=original_html[i];
+		     }
+</script>
+<script>    
+  MathJax.Hub.Config({messageStyle: 'none',tex2jax: {preview: 'none'}}); 
+</script>
+
+
 </body>
 </html>
